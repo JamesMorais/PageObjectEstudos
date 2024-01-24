@@ -1,8 +1,20 @@
-.gradle
+# Ignorar a pasta gradle/wrapper
+gradle/wrapper/
+
+# Ignorar a pasta .idea
+.idea/
+
+# Ignorar gradlew e gradlew.bat
+gradlew
+gradlew.bat
+
+
+# Ignorar arquivos e pastas gerados durante o build
 build/
-!gradle/wrapper/gradle-wrapper.jar
+out/
 !**/src/main/**/build/
 !**/src/test/**/build/
+
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
