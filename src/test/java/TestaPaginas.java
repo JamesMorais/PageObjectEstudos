@@ -40,20 +40,27 @@ public class TestaPaginas {
 
         // Título real (simplificado e sem caracteres especiais)
         String tituloPaginaEncontrada = driver.getTitle();
+        //Verificação se o titulo da página é o esperado
         assertEquals(tituloPaginaEsperada, tituloPaginaEncontrada);
 
     }
     @Test
     @DisplayName("Quando clicar no botão pesquisar sem inserir nada então devo ver todos os produtos")
     public void pesquisarCampoVazio(){
-        driver.get(baseUrl);
-        homePage = new Home(driver);
-        //Entrar na Pagina de testes
 
-        // Não inseriu nada no campo pesquisa
+        //Entrar na Pagina de testes
+        driver.get(baseUrl);
+
+        // Instanciar o page object
+        homePage = new Home(driver);
 
         //Cliquei no botão pesquisar
+        homePage.clicarBotaoPesquisar();
 
+        // Asserção
+        String tituloPaginaEsperada = "Resultados da pesquisa por “” – Praticar Automação CTG – ESTUDOS";
+        String titulloPaginaEncontrada = driver.getTitle();
+        assertEquals(titulloPaginaEncontrada, tituloPaginaEsperada);
 
     }
     //O setup são coisas que eu preciso para preparar os meus testes
