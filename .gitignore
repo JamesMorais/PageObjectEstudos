@@ -4,6 +4,9 @@ gradle/wrapper/
 # Ignorar a pasta .idea
 .idea/
 
+#ignorar a pasta .gradle
+.gradle
+
 # Ignorar gradlew e gradlew.bat
 gradlew
 gradlew.bat

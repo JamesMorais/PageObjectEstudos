@@ -16,7 +16,9 @@ dependencies {
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.16.1'
 
 }
-
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 test {
     useJUnitPlatform()
     testLogging {

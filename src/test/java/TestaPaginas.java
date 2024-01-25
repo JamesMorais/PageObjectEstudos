@@ -2,9 +2,15 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.nio.charset.StandardCharsets;
+import java.text.Collator;
+import java.text.Normalizer;
 import java.time.Duration;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestaPaginas {
@@ -15,20 +21,27 @@ public class TestaPaginas {
     @Test
     @DisplayName("Quando pesquisa pesquisar produto por nome, então deve ser mostrada página do produto")
     public void pesquisaProdutoPorNome(){
-        //Entrar no site de teste
+
+        // Entrar no site de teste
         driver.get(baseUrl);
-        //Instanciar o Page object
+
+        // Instanciar o Page object
         homePage = new Home(driver);
+
         // Realizar a busca por um produto
         String nomeProduto = "Camera";
         homePage.inserirProdutoCampoPesquisa(nomeProduto);
 
-        // Clicar no botao de busca
+        // Clicar no botão de busca
         homePage.clicarBotaoPesquisar();
 
-        String tituloPaginaEsperada = "Camera \\u2013 Praticar Automa\\u00E7\\u00E3o CTG \\u2013 ESTUDOS";
+        // Título esperado
+        String tituloPaginaEsperada = "Camera – Praticar Automação CTG – ESTUDOS";
+
+        // Título real (simplificado e sem caracteres especiais)
         String tituloPaginaEncontrada = driver.getTitle();
         assertEquals(tituloPaginaEsperada, tituloPaginaEncontrada);
+
     }
     @Test
     @DisplayName("Quando clicar no botão pesquisar sem inserir nada então devo ver todos os produtos")
